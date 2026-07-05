@@ -35,12 +35,21 @@
   "founder": { "@type": "Person", "name": "Mike Moes" },
   "priceRange": "$$",
   "areaServed": [
-    { "@type": "City", "name": "Portland" },
-    { "@type": "City", "name": "Salem" },
-    { "@type": "City", "name": "Eugene" },
-    { "@type": "City", "name": "Gresham" },
-    { "@type": "City", "name": "Hillsboro" },
-    { "@type": "State", "name": "Oregon" }
+    { "@type": "State", "name": "Oregon", "sameAs": "https://en.wikipedia.org/wiki/Oregon" },
+    { "@type": "City", "name": "Portland", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Salem", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Eugene", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Gresham", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Hillsboro", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Bend", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Corvallis", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Albany", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Lake Oswego", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Tigard", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Beaverton", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Springfield", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Medford", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+    { "@type": "City", "name": "Keizer", "containedInPlace": { "@type": "State", "name": "Oregon" } }
   ],
   "address": {
     "@type": "PostalAddress",
@@ -140,6 +149,8 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+.skip-link{position:absolute;top:-100%;left:16px;z-index:9999;padding:12px 24px;background:var(--accent);color:#fff;font-weight:700;border-radius:0 0 8px 8px;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
 body{
   font-family:'Inter',-apple-system,sans-serif;color:var(--ink);background:var(--cream);
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
@@ -764,6 +775,47 @@ html:not(.js) .bucket .paint{transform:none}
 }
 
 /* ==================================================================
+   MOBILE PERFORMANCE + ACCESSIBILITY FIXES
+================================================================== */
+@media (max-width:768px){
+  [data-plx]{transform:none!important}
+  .hero-bg .hero-bg-fallback{animation:none!important;transform:scale(1.02)}
+  .callbar{bottom:0;border-radius:0}
+}
+input,select,textarea{font-size:16px!important}
+:root{--muted:#4a5568}
+
+/* Mike availability indicator */
+.mike-live{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#2e7d32;font-weight:600}
+.mike-live::before{content:'';width:8px;height:8px;border-radius:50%;background:#4caf50;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.4)}}
+
+/* Form validation states */
+.qw-field input.error{border-color:#e63946;box-shadow:0 0 0 3px rgba(230,57,70,.15)}
+.qw-field .error-msg{color:#e63946;font-size:12px;margin-top:4px;display:none}
+.qw-field input.error + .error-msg{display:block}
+
+/* Cost calculator */
+.calc-section{background:linear-gradient(180deg,#f8fafc 0%,#fff 100%);padding:80px 0}
+.calc-card{background:#fff;border-radius:20px;box-shadow:0 4px 24px rgba(10,22,40,.08),0 0 0 1px rgba(10,22,40,.04);padding:40px;max-width:680px;margin:0 auto}
+.calc-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px}
+.calc-card .calc-sub{color:var(--muted);font-size:14px;margin-bottom:28px}
+.calc-row{margin-bottom:22px}
+.calc-row label{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink)}
+.calc-row select,.calc-row input[type="range"]{width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;background:#fff;color:var(--ink);transition:border-color .2s}
+.calc-row select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(var(--accent-rgb),.12)}
+.calc-range-wrap{position:relative}
+.calc-range-wrap input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent) var(--fill,50%),#e2e8f0 var(--fill,50%),#e2e8f0 100%);border:none;padding:0;cursor:pointer}
+.calc-range-wrap input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 2px 8px rgba(var(--accent-rgb),.3);cursor:pointer}
+.calc-range-val{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:6px}
+.calc-result{margin-top:28px;padding:24px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);border-radius:14px;border:1.5px solid rgba(var(--accent-rgb),.15);text-align:center}
+.calc-result .calc-price{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,6vw,36px);font-weight:800;color:var(--accent-deep);margin:8px 0}
+.calc-result .calc-note{font-size:13px;color:var(--muted)}
+.calc-result .calc-cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:14px 28px;background:var(--grad-cta);color:#fff;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.calc-result .calc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--accent-rgb),.3)}
+@media(max-width:600px){.calc-card{padding:24px 20px;border-radius:14px}}
+
+/* ==================================================================
    REDUCED MOTION — everything readable, nothing moving
 ================================================================== */
 @media (prefers-reduced-motion:reduce){
@@ -867,7 +919,7 @@ html:not(.js) .bucket .paint{transform:none}
 </head>
 <body>
 <script>document.documentElement.classList.add('js');</script>
-<a href="#top" class="skip-link" style="position:absolute;top:-100px;left:16px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:8px;font-weight:700;z-index:99999;transition:top .2s;text-decoration:none;font-size:14px" onfocus="this.style.top='16px'" onblur="this.style.top='-100px'">Skip to content</a>
+<a href="#top" class="skip-link">Skip to content</a>
 
 <!-- ============ INTRO PAINT SWEEP ============ -->
 <div id="intro" aria-hidden="true">
