@@ -107,7 +107,8 @@
     {"@type": "Question", "name": "What areas does Reed's Painting serve?", "acceptedAnswer": {"@type": "Answer", "text": "Reed's Painting serves all of Oregon including Portland, Salem, Eugene, Gresham, Hillsboro, and surrounding areas. We travel statewide for larger projects."}},
     {"@type": "Question", "name": "How quickly can Reed's Painting start my project?", "acceptedAnswer": {"@type": "Answer", "text": "Mike Moes, the owner, personally answers every call and typically has crews available within 1–2 weeks. Call 541-619-8724 for current availability."}},
     {"@type": "Question", "name": "Does Reed's Painting offer free estimates?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every estimate is free, no-obligation, and given personally by owner Mike Moes. Call 541-619-8724 before 5pm and he'll call you back the same day."}},
-    {"@type": "Question", "name": "What kind of paint does Reed's use?", "acceptedAnswer": {"@type": "Answer", "text": "Reed's Painting is a Sherwin-Williams premium partner using professional-grade paints. Eco-friendly, low-VOC finishes are available on request."}}
+    {"@type": "Question", "name": "What kind of paint does Reed's use?", "acceptedAnswer": {"@type": "Answer", "text": "Reed's Painting is a Sherwin-Williams premium partner using professional-grade paints. Eco-friendly, low-VOC finishes are available on request."}},
+    {"@type": "Question", "name": "How much does it cost to paint a house in Oregon in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "In 2026, Oregon house painting typically costs $3,000 to $12,000 for residential exteriors depending on size, condition, and paint quality. Interior painting runs $1,200 to $8,000. Use our free Oregon painting cost estimator for a personalized range, or call Mike at 541-619-8724 for an exact on-site quote."}}
   ]
 }
 </script>
@@ -775,15 +776,50 @@ html:not(.js) .bucket .paint{transform:none}
 }
 
 /* ==================================================================
-   MOBILE PERFORMANCE + ACCESSIBILITY FIXES
+   MOBILE-FIRST PERFORMANCE + ACCESSIBILITY FIXES
 ================================================================== */
+html,body{overflow-x:hidden}
+input,select,textarea{font-size:16px!important}
+:root{--muted:#4a5568}
+
 @media (max-width:768px){
   [data-plx]{transform:none!important}
   .hero-bg .hero-bg-fallback{animation:none!important;transform:scale(1.02)}
   .callbar{bottom:0;border-radius:0}
+  .hero-inner{padding-top:48px;padding-bottom:100px}
+  .estimate-card{margin:0 auto}
+  .hero h1{text-wrap:pretty}
+  .hero-sub{font-size:15.5px}
+  .swatch-stack{display:none}
+  .hero-watermark{display:none}
+  .section-title{font-size:clamp(28px,7vw,40px)!important}
+  .owner-visual{max-width:100%}
+  .owner-visual img{border-radius:18px}
+  .compare-card{border-radius:16px}
+  .compare-in{border-radius:14.5px}
+  .stats-card{padding:20px 18px}
+  .city-list{gap:8px 16px}
+  .faq-grid{gap:8px}
+  .faq-q{font-size:15px;padding:16px 18px}
+  .final-inner{padding:48px 20px}
+  .final-inner h2{font-size:clamp(28px,8vw,44px)!important}
+  .exit-card{margin:16px;border-radius:20px}
+  .qw-header{padding:24px 20px 0}
+  .qw-body{padding:18px 20px 24px}
+  .qw-opt{padding:14px 16px}
 }
-input,select,textarea{font-size:16px!important}
-:root{--muted:#4a5568}
+@media (max-width:400px){
+  .trust-inner{grid-template-columns:1fr!important}
+  .trust-item:last-child{grid-column:span 1}
+  .trust-icon{width:36px;height:36px}
+  .stats-grid{grid-template-columns:1fr!important}
+  .hero h1{font-size:clamp(32px,9vw,44px)}
+  .estimate-head{padding:22px 18px 0}
+  .estimate-body{padding:16px 18px 22px}
+  .nav-cta .num{font-size:12px}
+  .nav-cta{padding:8px 14px}
+  .nav-cta small{display:none}
+}
 
 /* Mike availability indicator */
 .mike-live{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#2e7d32;font-weight:600}
@@ -1000,6 +1036,7 @@ input,select,textarea{font-size:16px!important}
       <a href="#mike" data-close-drawer>Meet Mike</a>
       <a href="#compare" data-close-drawer>Why Reed's</a>
       <a href="#areas" data-close-drawer>Service Area</a>
+      <a href="#cost-calculator" data-close-drawer>Cost Estimator</a>
     </nav>
     <div class="mob-cta">
       <a class="mob-phone" href="tel:5416198724">
@@ -1065,7 +1102,13 @@ input,select,textarea{font-size:16px!important}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         </a>
       </div>
-      <div class="hero-guarantee rv" style="--d:7">
+      <div style="margin-top:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap" class="rv" style="--d:7">
+        <a href="sms:5416198724?body=Hi%20Mike%2C%20I%27d%20like%20a%20free%20painting%20estimate." style="color:rgba(255,255,255,.7);font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Prefer to text? SMS Mike
+        </a>
+      </div>
+      <div class="hero-guarantee rv" style="--d:8">
         <svg viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.2 8.6-7 10-3.8-1.4-7-5-7-10V5l7-3z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>
         <span><b>Mike's guarantee:</b> call before 5pm and you'll hear back from him personally, today.</span>
       </div>
@@ -1527,6 +1570,68 @@ input,select,textarea{font-size:16px!important}
   </div>
 </section>
 
+<!-- ============ 10c. PAINTING COST CALCULATOR ============ -->
+<section class="calc-section" id="cost-calculator">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker rv">Free tool</div>
+      <h2 class="section-title split" data-split>Oregon painting cost <span class="hl" data-nosplit>estimator.<svg class="draw" viewBox="0 0 300 28" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M6,20 C60,10 120,24 175,14 C225,6 268,18 294,10" style="--pd:500"/></svg></span></h2>
+      <p class="section-sub rv" style="--d:1">Get a rough idea of what your project might cost. For an exact number, call Mike.</p>
+    </div>
+    <div class="calc-card rv" style="--d:2">
+      <h3>Estimate your project</h3>
+      <p class="calc-sub">Adjust the options below to see an approximate price range for your Oregon painting project.</p>
+
+      <div class="calc-row">
+        <label>What type of project?</label>
+        <select id="calcType">
+          <option value="ext-res">Exterior residential</option>
+          <option value="int-res">Interior residential</option>
+          <option value="both-res">Interior + exterior</option>
+          <option value="commercial">Commercial / industrial</option>
+          <option value="pressure">Pressure washing only</option>
+        </select>
+      </div>
+
+      <div class="calc-row">
+        <label>Home size (square feet)</label>
+        <div class="calc-range-wrap">
+          <input type="range" id="calcSize" min="800" max="6000" value="2000" step="100">
+          <div class="calc-range-val"><span>800 sq ft</span><span id="calcSizeVal">2,000 sq ft</span><span>6,000 sq ft</span></div>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label>Current condition</label>
+        <select id="calcCondition">
+          <option value="good">Good shape, just needs fresh paint</option>
+          <option value="moderate" selected>Some prep work needed (peeling, caulking)</option>
+          <option value="heavy">Heavy prep (scraping, priming, repairs)</option>
+        </select>
+      </div>
+
+      <div class="calc-row">
+        <label>Number of stories</label>
+        <select id="calcStories">
+          <option value="1" selected>Single story</option>
+          <option value="2">Two stories</option>
+          <option value="3">Three+ stories</option>
+        </select>
+      </div>
+
+      <div class="calc-result" id="calcResult">
+        <div style="font-size:13px;font-weight:600;color:var(--muted)">Estimated cost range</div>
+        <div class="calc-price" id="calcPrice">$4,200 – $7,800</div>
+        <div class="calc-note">Based on Oregon market averages. Your actual price depends on paint quality, surface condition, and access. Mike will give you an exact number on-site, free of charge.</div>
+        <a class="calc-cta" href="tel:5416198724">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          Get your exact quote: 541-619-8724
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 11. FINAL CTA + COLOR PICKER ============ -->
 <section class="final" id="contact">
   <div class="blob" aria-hidden="true"></div>
@@ -1560,6 +1665,7 @@ input,select,textarea{font-size:16px!important}
       <a href="#services">Pressure Washing</a>
       <a href="#services">General Construction</a>
       <a href="#areas">Service Areas</a>
+      <a href="#cost-calculator">Cost Estimator</a>
     </div>
     <div class="footer-col">
       <h4>Talk to Mike</h4>
@@ -1583,7 +1689,7 @@ input,select,textarea{font-size:16px!important}
   <div class="callbar-inner">
     <div class="callbar-msg">
       <span class="avatar">M</span>
-      <span><b>Mike's crew has openings this week.</b><small>Free estimate &middot; usually a same-day callback</small></span>
+      <span><b>Mike's crew has openings this week.</b><small><span class="mike-live">Mike is available now</span> &middot; Free estimate &middot; same-day callback</small></span>
     </div>
     <a class="callbar-cta" href="tel:5416198724" data-splash>
       <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
@@ -2285,6 +2391,48 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.setAttribute('aria-expanded', !open);
   });
 });
+
+/* ============ COST CALCULATOR ============ */
+(function(){
+  var type = document.getElementById('calcType');
+  var size = document.getElementById('calcSize');
+  var cond = document.getElementById('calcCondition');
+  var stories = document.getElementById('calcStories');
+  var price = document.getElementById('calcPrice');
+  var sizeVal = document.getElementById('calcSizeVal');
+  if(!type || !size) return;
+
+  var rates = {
+    'ext-res': {base: 1.80, label: 'Exterior residential'},
+    'int-res': {base: 1.50, label: 'Interior residential'},
+    'both-res': {base: 2.80, label: 'Interior + exterior'},
+    'commercial': {base: 2.20, label: 'Commercial'},
+    'pressure': {base: 0.40, label: 'Pressure washing'}
+  };
+  var condMult = {good: 0.85, moderate: 1.0, heavy: 1.3};
+  var storyMult = {'1': 1.0, '2': 1.2, '3': 1.45};
+
+  function calc(){
+    var r = rates[type.value] || rates['ext-res'];
+    var sq = parseInt(size.value);
+    var cm = condMult[cond.value] || 1.0;
+    var sm = storyMult[stories.value] || 1.0;
+    var mid = sq * r.base * cm * sm;
+    var low = Math.round(mid * 0.8 / 100) * 100;
+    var high = Math.round(mid * 1.25 / 100) * 100;
+    low = Math.max(low, 800);
+    price.textContent = '$' + low.toLocaleString() + ' – $' + high.toLocaleString();
+    sizeVal.textContent = sq.toLocaleString() + ' sq ft';
+    var pct = ((sq - 800) / (6000 - 800)) * 100;
+    size.style.setProperty('--fill', pct + '%');
+  }
+
+  [type, size, cond, stories].forEach(function(el){
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+  calc();
+})();
 </script>
 </body>
 </html>
